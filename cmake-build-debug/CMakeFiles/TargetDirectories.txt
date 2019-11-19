@@ -1,0 +1,3 @@
+C:/Users/bukpu/Desktop/hw/comp2012h/pp/Mini-Ray-Tracer/cmake-build-debug/CMakeFiles/Mini_Ray_Tracer.dir
+C:/Users/bukpu/Desktop/hw/comp2012h/pp/Mini-Ray-Tracer/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/bukpu/Desktop/hw/comp2012h/pp/Mini-Ray-Tracer/cmake-build-debug/CMakeFiles/rebuild_cache.dir

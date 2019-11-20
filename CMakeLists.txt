@@ -3,4 +3,4 @@ project(Mini_Ray_Tracer)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Mini_Ray_Tracer main.cpp vector.cpp)
+add_executable(Mini_Ray_Tracer main.cpp vector.cpp external/stb_image_write.h)

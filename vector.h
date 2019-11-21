@@ -8,15 +8,15 @@ public:
     Vector3d(double x, double y, double z);
 
     ///accessors
-    double getX(double x) const;
+    double getX() const;
 
-    double getY(double y) const;
+    double getY() const;
 
-    double getZ(double z) const;
+    double getZ() const;
 
     double norm() const;
 
-    double operator[](int dim_id);
+    double operator[](int dim_id) const;
 
     ///mutators
     void setX(double x);

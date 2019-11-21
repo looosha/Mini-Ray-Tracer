@@ -1,5 +1,6 @@
 #include <cmath>
 #include "vector3d.h"
+#include <stdexcept>
 
 Vector3d::Vector3d() {
     x = y = z = 0.0;
@@ -19,9 +20,10 @@ double Vector3d::norm() const {
 
 double Vector3d::operator[](int dim_id) const{
     switch(dim_id) {
-        case 0: return x; break;
-        case 1: return y; break;
-        default: return z;
+        case 0: return x;
+        case 1: return y;
+        case 2: return z;
+        default: throw std::range_error("received value out of range");
     }
 }
 

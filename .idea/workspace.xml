@@ -28,6 +28,12 @@
   <component name="ProjectId" id="1ToNgA38UE3ln9JHK3fHpnHVVls" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.smartKeys" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -59,6 +65,8 @@
       <option name="presentableId" value="Default" />
       <updated>1574122596328</updated>
       <workItem from="1574122597800" duration="204000" />
+      <workItem from="1574329384950" duration="2331000" />
+      <workItem from="1574770483437" duration="12828000" />
     </task>
     <servers />
   </component>
@@ -70,7 +78,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

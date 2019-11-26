@@ -1,56 +1,34 @@
 #include <cmath>
-#include "vector3d.h"
 #include <stdexcept>
+#include "vector3d.h"
+#include "helper.h"
 
-Vector3d::Vector3d() {
-    x = y = z = 0.0;
+Vector3d::Vector3d() : Tuple3f() {}
+
+Vector3d::Vector3d(double x, double y, double z) : Tuple3f(x, y, z) {}
+
+inline double Vector3d::norm() const {
+    return std::sqrt(x * x + y * y + z * z);
 }
-
-Vector3d::Vector3d(double x, double y, double z): x(x), y(y), z(z) {}
-
-double Vector3d::getX() const {return x;}
-
-double Vector3d::getY() const {return y;}
-
-double Vector3d::getZ() const {return z;}
-
-double Vector3d::norm() const {
-    return sqrt(x * x + y * y + z * z);
-}
-
-double Vector3d::operator[](int dim_id) const{
-    switch(dim_id) {
-        case 0: return x;
-        case 1: return y;
-        case 2: return z;
-        default: throw std::range_error("received value out of range");
-    }
-}
-
-void Vector3d::setX(double x) {this->x = x;}
-
-void Vector3d::setY(double y) {this->y = y;}
-
-void Vector3d::setZ(double z) {this->z = z;}
 
 Vector3d Vector3d::operator -() const {
-    Vector3d v(-x, -y, -z);
-    return v;
+    return Vector3d(-x, -y, -z);
 }
 
 Vector3d Vector3d::operator + (const Vector3d &rhs) const {
-    Vector3d v(x + rhs.getX(), y + rhs.getY(), z + rhs.getZ());
-    return v;
+    return Vector3d(x + rhs.getX(), y + rhs.getY(), z + rhs.getZ());
 }
 
 Vector3d Vector3d::operator - (const Vector3d &rhs) const {
-    Vector3d v(x - rhs.getX(), y - rhs.getY(), z - rhs.getZ());
-    return v;
+    return Vector3d(x - rhs.getX(), y - rhs.getY(), z - rhs.getZ());
 }
 
 Vector3d Vector3d::operator * (double c) const {
-    Vector3d v(c * x, c * y, c * z);
-    return v;
+    return Vector3d(c * x, c * y, c * z);
+}
+
+Vector3d Vector3d::operator / (double c) const {
+    return Vector3d(x / c,  y / c, z / c);
 }
 
 double Vector3d::operator * (const Vector3d &rhs) const {
@@ -65,6 +43,29 @@ Vector3d Vector3d::operator ^ (const Vector3d &rhs) const {
     return v;
 }
 
+
+Vector3d Vector3d::operator += (const Vector3d &rhs) {
+    return *this = *this + rhs;
+}
+
+Vector3d Vector3d::operator -= (const Vector3d &rhs) {
+    return *this = *this - rhs;
+}
+
+Vector3d Vector3d::operator *= (double c) {
+    return *this = *this * c;
+}
+
+Vector3d Vector3d::operator /= (double c) {
+    return *this = *this / c;
+}
+
+Vector3d Vector3d::operator ^= (const Vector3d &rhs) {
+    return *this = *this ^ rhs;
+}
+
 double getAngle(const Vector3d &v1, const Vector3d &v2) {
+    if (FloatComparison::is_equal(v1.norm(), 0.0) || FloatComparison::is_equal(v2.norm(), 0.0))
+        throw std::logic_error("Angle is defined only for vectors of non-zero length");
     return acos ((v1 * v2) / (v1.norm() * v2.norm()));
 }

@@ -18,5 +18,6 @@ public:
     void setY(double);
     void setZ(double);
 
-    double& operator[](int index); ///return a reference to member #index
+    Tuple3f operator & (int x);
+    double& operator [] (int index); ///return a reference to member #index
 };

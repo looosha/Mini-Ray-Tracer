@@ -23,10 +23,6 @@ Vector3d Vector3d::operator - (const Vector3d &rhs) const {
     return Vector3d(x - rhs.getX(), y - rhs.getY(), z - rhs.getZ());
 }
 
-Vector3d Vector3d::operator * (double c) const {
-    return Vector3d(c * x, c * y, c * z);
-}
-
 Vector3d Vector3d::operator / (double c) const {
     return Vector3d(x / c,  y / c, z / c);
 }
@@ -62,6 +58,14 @@ Vector3d Vector3d::operator /= (double c) {
 
 Vector3d Vector3d::operator ^= (const Vector3d &rhs) {
     return *this = *this ^ rhs;
+}
+
+Vector3d operator * (const Vector3d &vec, double c) {
+    return Vector3d(c * vec.getX(), c * vec.getY(), c * vec.getZ());
+}
+
+Vector3d operator * (double c, const Vector3d &vec) {
+    return Vector3d(c * vec.getX(), c * vec.getY(), c * vec.getZ());
 }
 
 double getAngle(const Vector3d &v1, const Vector3d &v2) {

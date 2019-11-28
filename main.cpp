@@ -41,10 +41,10 @@ void gen_gradient() {
 
     for (int i = 0; i < width; ++i) {
         for (int j = 0; j < height; ++j) {
-            double c = j / double(height - 1);
+            double c = (j + i) / double(width + height - 2);
             Color col;
             col[0] = 10;
-            image.set(i, j, Color(1.0, 1.0, 1.0) * c + Color(0.0, 0.4, 1.0) * (1 - c));
+            image.set(i, j, c * Color(1.0, 1.0, 1.0) + Color(0.0, 0.4, 1.0) * (1 - c));
         }
     }
 

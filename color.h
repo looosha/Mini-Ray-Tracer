@@ -15,7 +15,6 @@ public:
     char getB() const;
 
     Color operator + (const Color &rhs) const; ///addition
-    Color operator * (double c) const; ///multiplication by a scalar
     Color operator / (double c) const; ///division by a scalar
 
     ///setters
@@ -23,3 +22,6 @@ public:
     void setG(int);
     void setB(int);
 };
+
+Color operator * (double c, const Color &col); ///left multiplication by a scalar
+Color operator * (const Color &col, double c); ///right multiplication by a scalar

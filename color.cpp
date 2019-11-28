@@ -30,10 +30,6 @@ Color Color::operator + (const Color &rhs) const {
     return Color(x + rhs.getX(), y + rhs.getY(), z + rhs.getZ());
 }
 
-Color Color::operator * (double c) const {
-    return Color(c * x, c * y, c * z);
-}
-
 Color Color::operator / (double c) const {
     return Color(x / c,  y / c, z / c);
 }
@@ -44,3 +40,11 @@ void Color::setR(int r) {this->x = to_continuous(r);}
 void Color::setG(int g) {this->y = to_continuous(g);}
 
 void Color::setB(int b) {this->z = to_continuous(b);}
+
+Color operator * (const Color &col, double c) {
+    return Color(c * col.getX(), c * col.getY(), c * col.getZ());
+}
+
+Color operator * (double c, const Color &col) {
+    return Color(c * col.getX(), c * col.getY(), c * col.getZ());
+}

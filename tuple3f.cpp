@@ -19,7 +19,7 @@ void Tuple3f::setY(double y) {this->y = y;}
 void Tuple3f::setZ(double z) {this->z = z;}
 
 
-double& Tuple3f::operator[](int index) {
+double& Tuple3f::operator [] (int index) {
     switch(index) {
         case 0: return x;
         case 1: return y;

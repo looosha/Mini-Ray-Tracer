@@ -1,8 +1,8 @@
 #include "tuple3f.h"
 
 class Color : public Tuple3f {
-    static char to_discrete(double);
-    static double to_continuous(char);
+    static unsigned char to_discrete(double);
+    static double to_continuous(unsigned char);
 public:
     ///constructors
     Color();
@@ -10,9 +10,9 @@ public:
     Color(int r, int g, int b);
 
     ///accessors
-    char getR() const;
-    char getG() const;
-    char getB() const;
+    unsigned char getR() const;
+    unsigned char getG() const;
+    unsigned char getB() const;
 
     Color operator + (const Color &rhs) const; ///addition
     Color operator / (double c) const; ///division by a scalar

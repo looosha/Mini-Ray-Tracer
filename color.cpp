@@ -1,12 +1,12 @@
 #include <cassert>
 #include "color.h"
 
-char Color::to_discrete(double d) {
-    return char(d * 255.99);
+unsigned  char Color::to_discrete(double d) {
+    return static_cast <unsigned char> (d * 255.99);
 }
 
-double Color::to_continuous(char c) {
-    return double(c / 256.0);
+double Color::to_continuous(unsigned char c) {
+    return static_cast <double> (c / 256.0);
 }
 
 Color::Color() : Tuple3f() {}
@@ -20,11 +20,11 @@ Color::Color(int r, int g, int b)  {
     z = to_continuous(b);
 }
 
-char Color::getR() const {return to_discrete(x);}
+unsigned char Color::getR() const {return to_discrete(x);}
 
-char Color::getG() const {return to_discrete(y);}
+unsigned char Color::getG() const {return to_discrete(y);}
 
-char Color::getB() const {return to_discrete(z);}
+unsigned char Color::getB() const {return to_discrete(z);}
 
 Color Color::operator + (const Color &rhs) const {
     return Color(x + rhs.getX(), y + rhs.getY(), z + rhs.getZ());

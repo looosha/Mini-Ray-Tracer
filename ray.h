@@ -1,3 +1,6 @@
+#ifndef MINI_RAY_TRACER_RAY_H
+#define MINI_RAY_TRACER_RAY_H
+
 #include "vector3d.h"
 #include "color.h"
 
@@ -13,3 +16,6 @@ public:
 
     Color& attenuation() {return _attenuation;}
 };
+
+#endif
+

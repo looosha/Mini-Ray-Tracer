@@ -1,11 +1,17 @@
+#ifndef MINI_RAY_TRACER_OBJECT3D_H
+#define MINI_RAY_TRACER_OBJECT3D_H
+
 #include "ray.h"
 
 struct HitRecord {
+    double t;
+    Vector3d point;
+    Vector3d normal;
 };
 
 class Shape {
 public:
-    virtual bool hit(const Ray &ray, double t_min, double t_max, HitRecord &result) const = 0;
+    virtual bool hit(const Ray &ray, double t_min, double t_max, HitRecord &record) const = 0;
 };
 
 class Texture {
@@ -13,7 +19,7 @@ class Texture {
 
 class Surface {
 public:
-    virtual bool scatter(const Ray &ray, HitRecord &result) const  = 0;
+    virtual bool scatter(const Ray &ray, HitRecord &record) const  = 0;
 };
 
 class Object3d {
@@ -23,3 +29,5 @@ class Object3d {
 public:
     Ray trace (const Ray &ray) {}
 };
+
+#endif

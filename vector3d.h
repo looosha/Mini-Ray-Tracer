@@ -1,3 +1,6 @@
+#ifndef MINI_RAY_TRACER_VECTOR3D_H
+#define MINI_RAY_TRACER_VECTOR3D_H
+
 #include "tuple3f.h"
 
 class Vector3d : public Tuple3f {
@@ -28,3 +31,5 @@ Vector3d operator * (double c, const Vector3d &vec); ///left multiplication by a
 Vector3d operator * (const Vector3d &vec, double c); ///right multiplication by a scalar
 
 double getAngle(const Vector3d &v1, const Vector3d &v2); ///angle between two vectors in radians
+
+#endif

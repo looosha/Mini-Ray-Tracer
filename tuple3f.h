@@ -1,3 +1,6 @@
+#ifndef MINI_RAY_TRACER_TUPLE3F_H
+#define MINI_RAY_TRACER_TUPLE3F_H
+
 ///A class supporting a tuple of 3 floating point values
 ///Intended to be used as a base class
 
@@ -21,3 +24,5 @@ public:
     Tuple3f operator & (int x);
     double& operator [] (int index); ///return a reference to member #index
 };
+
+#endif

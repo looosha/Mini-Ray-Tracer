@@ -1,3 +1,6 @@
+#ifndef MINI_RAY_TRACER_COLOR_H
+#define MINI_RAY_TRACER_COLOR_H
+
 #include "tuple3f.h"
 
 class Color : public Tuple3f {
@@ -25,3 +28,5 @@ public:
 
 Color operator * (double c, const Color &col); ///left multiplication by a scalar
 Color operator * (const Color &col, double c); ///right multiplication by a scalar
+
+#endif

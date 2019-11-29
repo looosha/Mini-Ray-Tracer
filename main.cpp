@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "color.h"
+#include "sphere.h"
 
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "external/stb_image_write.h"
@@ -57,7 +58,32 @@ void gen_gradient() {
     image.write_to_file("img.png");
 }
 
+
+#include <iostream>
+Color color (Sphere s, Ray r, HitRecord record) {
+    if (s.hit(r, 0, 100000, record)) {
+        return Color(1.0, 0.0, 0.0);
+    }
+    return Color(0.0, 1.0, 0.0);
+}
+
 int main() {
-    gen_gradient();
-    return 0;
+    //gen_gradient();
+
+    const int width = 500;
+    const int height = 300;
+
+    Image image(width, height);
+
+    Sphere s(Vector3d(0.0, 0.0, -100), 30);
+    HitRecord record;
+
+    for (int i = -250; i <= 249; ++i) {
+        for (int j = -150; j <= 149; ++j) {
+            Ray r(Vector3d(0.0, 0.0, 0.0), Vector3d((i + 0.5) / 100, (j + 0.5) / 100, -1));
+            image.set(i + 250, j + 150, color(s, r, record));
+        }
+    }
+
+    image.write_to_file("img.png");
 }

@@ -24,4 +24,4 @@ public:
     double& operator [] (int index); ///return a reference to member #index
 };
 
-#endif
+#endif // MINI_RAY_TRACER_TUPLE3F_H

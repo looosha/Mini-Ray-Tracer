@@ -1,3 +1,6 @@
+#ifndef MINI_RAY_TRACER_UTIL_H
+#define MINI_RAY_TRACER_UTIL_H
+
 ///Compilation of useful tools
 #include <limits>
 #include <random>
@@ -15,3 +18,5 @@ namespace utils {
 
     double genRandom(double = 0, double = std::numeric_limits <double>::max());
 }
+
+#endif // MINI_RAY_TRACER_UTIL_H

@@ -5,8 +5,8 @@
 #include "ray.h"
 
 struct HitRecord {
-    double t;
-    Vector3d point;
+    double time;
+    Vector3d point_hitted;
     Vector3d normal;
 };
 
@@ -31,4 +31,4 @@ public:
     Ray trace (const Ray &ray);
 };
 
-#endif
+#endif // MINI_RAY_TRACER_OBJECT3D_H

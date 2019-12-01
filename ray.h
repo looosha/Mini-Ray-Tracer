@@ -17,5 +17,5 @@ public:
     Color& attenuation() {return _attenuation;}
 };
 
-#endif
+#endif // MINI_RAY_TRACER_RAY_H
 

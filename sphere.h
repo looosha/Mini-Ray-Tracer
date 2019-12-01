@@ -11,7 +11,7 @@ public:
     //constructor
     Sphere(Vector3d center, double radius);
 
-    virtual bool hit(const Ray &ray, double t_min, double t_max, HitRecord &record) const;
+    virtual bool hit(const Ray &ray, double t_min, double t_max,) const;
 };
 
 #endif // MINI_RAY_TRACER_SPHERE_H

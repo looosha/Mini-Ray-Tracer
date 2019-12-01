@@ -34,4 +34,4 @@ Vector3d operator * (const Vector3d &vec, double c); ///right multiplication by 
 
 double getAngle(const Vector3d &v1, const Vector3d &v2); ///angle between two vectors in radians
 
-#endif
+#endif // MINI_RAY_TRACER_VECTOR3D_H

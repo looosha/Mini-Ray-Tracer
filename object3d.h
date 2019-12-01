@@ -3,6 +3,8 @@
 
 #include <utility>
 #include "ray.h"
+#include <utility>
+#include <limits>
 
 struct HitRecord {
     double time;
@@ -12,12 +14,12 @@ struct HitRecord {
 
 class Shape {
 public:
-    virtual bool hit(const Ray &ray, double t_min, double t_max, HitRecord &record) const = 0;
+    virtual std::pair<bool, HitRecord> hit(const Ray &ray, double t_min = 0, double t_max = std::numeric_limits <double>::max()) const = 0;
 };
 
 class Material {
 public:
-    virtual bool scatter(const Ray &ray, HitRecord &record) const  = 0;
+    virtual std::pair<bool, Ray> scatter(const Ray &ray, HitRecord &record) const  = 0;
 };
 
 class Texture {

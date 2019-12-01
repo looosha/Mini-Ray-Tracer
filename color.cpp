@@ -1,5 +1,6 @@
 #include <cassert>
 #include "color.h"
+#include "vector3d.h"
 
 unsigned  char Color::to_discrete(double d) {
     return static_cast <unsigned char> (d * 255.99);
@@ -40,6 +41,10 @@ void Color::setR(int r) {this->x = to_continuous(r);}
 void Color::setG(int g) {this->y = to_continuous(g);}
 
 void Color::setB(int b) {this->z = to_continuous(b);}
+
+Color::operator class Vector3d() {
+    return {x, y, z};
+}
 
 Color operator * (const Color &col, double c) {
     return Color(c * col.getX(), c * col.getY(), c * col.getZ());

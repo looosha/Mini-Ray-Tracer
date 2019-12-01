@@ -41,9 +41,7 @@ std::ostream & operator << (std::ostream &out, const Color &c) {
     return out;
 }
 
-void gen_gradient() {
-    const int width = 500;
-    const int height = 300;
+Image gen_gradient(const int width, const int height) {
     Image image(width, height);
 
     for (int i = 0; i < width; ++i) {
@@ -55,33 +53,23 @@ void gen_gradient() {
         }
     }
 
-    image.write_to_file("img.png");
-}
-
-
-#include <iostream>
-Color color (Sphere s, Ray r, HitRecord record) {
-    if (s.hit(r, 0, 100000, record)) {
-        return Color(1.0, 0.0, 0.0);
-    }
-    return Color(0.0, 1.0, 0.0);
+    return image;
 }
 
 int main() {
-    //gen_gradient();
-
     const int width = 500;
     const int height = 300;
 
-    Image image(width, height);
+    Image image = gen_gradient(width, height);
 
-    Sphere s(Vector3d(0.0, 0.0, -100), 30);
-    HitRecord record;
+    Sphere s(Vector3d(0.0, 0.0, -1), 0.5);
 
     for (int i = -250; i <= 249; ++i) {
         for (int j = -150; j <= 149; ++j) {
             Ray r(Vector3d(0.0, 0.0, 0.0), Vector3d((i + 0.5) / 100, (j + 0.5) / 100, -1));
-            image.set(i + 250, j + 150, color(s, r, record));
+            HitRecord record;
+            if (s.hit(r, 0, 100000, record))
+                image.set(i + 250, j + 150, static_cast <Color> ((record.normal + Vector3d(1, 1, 1)) / 2));
         }
     }
 

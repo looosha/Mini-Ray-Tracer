@@ -9,7 +9,7 @@ class Color : public Tuple3f {
 public:
     ///constructors
     Color();
-    Color(double r, double g, double b);
+    Color(double x, double y, double z);
     Color(int r, int g, int b);
 
     ///accessors
@@ -24,6 +24,8 @@ public:
     void setR(int);
     void setG(int);
     void setB(int);
+
+    explicit operator class Vector3d();///conversion to the Vector3d class
 };
 
 Color operator * (double c, const Color &col); ///left multiplication by a scalar

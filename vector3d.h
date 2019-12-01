@@ -25,6 +25,8 @@ public:
     Vector3d operator *= (double c); ///multiplication by a scalar assignment
     Vector3d operator /= (double c); ///division by a scalar assignment
     Vector3d operator ^= (const Vector3d &rhs); ///cross product assignment
+
+    explicit operator class Color(); ///conversion to the Color class
 };
 
 Vector3d operator * (double c, const Vector3d &vec); ///left multiplication by a scalar

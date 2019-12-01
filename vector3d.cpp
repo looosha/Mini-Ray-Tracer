@@ -1,7 +1,8 @@
 #include <cmath>
 #include <stdexcept>
 #include "vector3d.h"
-#include "helper.h"
+#include "util.h"
+#include "color.h"
 
 Vector3d::Vector3d() : Tuple3f() {}
 
@@ -69,7 +70,11 @@ Vector3d operator * (double c, const Vector3d &vec) {
 }
 
 double getAngle(const Vector3d &v1, const Vector3d &v2) {
-    if (FloatComparison::is_equal(v1.norm(), 0.0) || FloatComparison::is_equal(v2.norm(), 0.0))
+    if (utils::floatcmp::isEqual(v1.norm(), 0.0) || utils::floatcmp::isEqual(v2.norm(), 0.0))
         throw std::logic_error("Angle is defined only for vectors of non-zero length");
     return acos ((v1 * v2) / (v1.norm() * v2.norm()));
+}
+
+Vector3d::operator class Color() {
+    return {x, y, z};
 }

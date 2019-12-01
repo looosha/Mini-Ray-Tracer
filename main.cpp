@@ -1,47 +1,26 @@
+#include <limits>
 #include <string>
 #include <vector>
 
 #include <iostream>
 
+#define STB_IMAGE_WRITE_IMPLEMENTATION
+#include "raytracer.h"
 #include "color.h"
 #include "sphere.h"
+#include "util.h"
 
-#define STB_IMAGE_WRITE_IMPLEMENTATION
-#include "external/stb_image_write.h"
-
-class Image {
-    const int width;
-    const int height;
-    std::vector <std::vector <Color>> pixels;
-public:
-    Image(int w, int h) : width(w), height(h), pixels(h, std::vector <Color> (w)) {}
-
-    void set(int x, int y, Color col) {
-        pixels[y][x] = col;
-    }
-
-    void write_to_file(std::string filename) const {
-        std::vector <unsigned char> serialized(width * height * 3);
-
-        for (int y = height - 1; y >= 0; --y) {
-            for (int x = 0; x < width; ++x) {
-                int cell = y * width * 3 + x * 3;
-                serialized[cell + 0] = pixels[y][x].getR();
-                serialized[cell + 1] = pixels[y][x].getG();
-                serialized[cell + 2] = pixels[y][x].getB();
-            }
-        }
-
-        stbi_write_png("img.png", width, height, 3, serialized.data(), width * 3);
-    }
-};
+std::ostream & operator << (std::ostream &out, const Vector3d &c) {
+    out << "(" << c.getX() << " " << c.getY() << " " << c.getZ() << ")";
+    return out;
+}
 
 std::ostream & operator << (std::ostream &out, const Color &c) {
     out << "(" << int(c.getR()) << " " << int(c.getG()) << " " << int(c.getB()) << ")";
     return out;
 }
 
-Image gen_gradient(const int width, const int height) {
+Image genGradient(const int width, const int height) {
     Image image(width, height);
 
     for (int i = 0; i < width; ++i) {
@@ -49,7 +28,38 @@ Image gen_gradient(const int width, const int height) {
             double a = j / double(height - 1);
             double b = i / double(width - 1);
             Color col = Color(0.0, 0.0, 1.0) + a * Color(1.0, 0.0, 0.0) + (1 - b) * Color(0.0, 1.0, 0.0);
-            image.set(i, j, col);
+            image.setPixel(i, j, col);
+        }
+    }
+
+    return image;
+}
+
+Sphere s;
+
+Color trace(const Ray &ray) {
+    HitRecord record;
+    if (s.hit(ray, 0, std::numeric_limits <double>::max(), record))
+        return static_cast <Color> ((record.normal + Vector3d(1.0, 1.0, 1.0)) / 2);
+    Vector3d vec = (ray.getDirection() / ray.getDirection().norm() + Vector3d(1.0, 1.0, 1.0)) / 2;
+    return Color(0.0, 0.0, 1.0) + vec.getX() * Color(1.0, 0.0, 0.0) + (1 - vec.getY()) * Color(0.0, 1.0, 0.0);
+}
+
+#include <iostream>
+
+Image snapshot(int width, int height, int precision, int depth) {
+    Image image = genGradient(width, height);
+
+    Camera cam;
+    for (int x = 0; x < width; ++x) {
+        for (int y = 0; y < height; ++y) {
+           Color avgColor{0.0, 0.0, 0.0};
+            for (int i = 0; i < precision; ++i) {
+                double xPos = (x + utils::genRandom(0.0, 1.0)) / width, yPos = (y + utils::genRandom(0.0, 1.0)) / height;
+                Ray ray = cam.getRay(xPos, yPos);
+                avgColor = avgColor + trace(ray) / precision;
+            }
+            image.setPixel(x, y, avgColor);
         }
     }
 
@@ -57,21 +67,11 @@ Image gen_gradient(const int width, const int height) {
 }
 
 int main() {
-    const int width = 500;
-    const int height = 300;
+    const int width = 400;
+    const int height = 200;
+    const int precision = 50;
+    const int depth = 5;
 
-    Image image = gen_gradient(width, height);
-
-    Sphere s(Vector3d(0.0, 0.0, -1), 0.5);
-
-    for (int i = -250; i <= 249; ++i) {
-        for (int j = -150; j <= 149; ++j) {
-            Ray r(Vector3d(0.0, 0.0, 0.0), Vector3d((i + 0.5) / 100, (j + 0.5) / 100, -1));
-            HitRecord record;
-            if (s.hit(r, 0, 100000, record))
-                image.set(i + 250, j + 150, static_cast <Color> ((record.normal + Vector3d(1, 1, 1)) / 2));
-        }
-    }
-
-    image.write_to_file("img.png");
+    s = Sphere(Vector3d(0.0, 0.0, -1), 0.5);
+    snapshot(width, height, precision, depth).writeToFile("img.png");
 }

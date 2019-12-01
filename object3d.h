@@ -1,6 +1,7 @@
 #ifndef MINI_RAY_TRACER_OBJECT3D_H
 #define MINI_RAY_TRACER_OBJECT3D_H
 
+#include <utility>
 #include "ray.h"
 
 struct HitRecord {

@@ -1,8 +1,10 @@
 #ifndef MINI_RAY_TRACER_RAYTRACER_H
 #define MINI_RAY_TRACER_RAYTRACER_H
 
+#include <limits>
 #include <string>
 #include <vector>
+#include <cmath>
 
 #include "external/stb_image_write.h"
 
@@ -10,6 +12,8 @@
 #include "camera.h"
 #include "ray.h"
 #include "color.h"
+#include "sphere.h"
+#include "util.h"
 
 class Image {
     const int width;
@@ -23,15 +27,15 @@ public:
     void writeToFile(std::string filename) const;
 };
 
+Image genGradient(const int width, const int height);
+
 class RayTracer {
     Camera camera;
+    Sphere s {Vector3d(0.0, 0.0, -1), 0.5};
 
-    ///vector <Object3d> scene;
-    Color trace(double x, double y);
+    Color trace(const Ray &ray);
 public:
-    RayTracer();
-
-    Image snapshot(int resolution_w, int resolution_h, int refinement, int depth);
+    Image snapshot(int res_w, int res_h, int antialiasing, int depth);
 };
 
 

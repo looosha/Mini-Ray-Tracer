@@ -5,7 +5,7 @@
 
 struct HitRecord {
     double time;
-    Vector3d point;
+    Vector3d point_hitted;
     Vector3d normal;
 };
 

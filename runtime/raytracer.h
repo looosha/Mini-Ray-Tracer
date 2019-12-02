@@ -13,6 +13,8 @@
 #include "../geometry/ray.h"
 #include "../geometry/color.h"
 #include "../shapes/sphere.h"
+#include "../materials/lambertian.h"
+#include "../materials/metal.h"
 #include "../util/util.h"
 
 class Image {
@@ -31,10 +33,13 @@ Image genGradient(const int width, const int height);
 
 class RayTracer {
     Camera camera;
-    Sphere s {Vector3d(0.0, 0.0, -1), 0.5};
 
-    Color trace(const Ray &ray);
+    std::vector <Object3d> scene;
+
+    Color trace(const Ray &ray, int depth);
 public:
+    RayTracer();
+
     Image snapshot(int res_w, int res_h, int antialiasing, int depth);
 };
 

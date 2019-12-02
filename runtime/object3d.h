@@ -28,11 +28,15 @@ class Texture {
 };
 
 class Object3d {
-    Shape *shape;
-    Material *surface;
-    Texture *texture;
 public:
-    Ray trace (const Ray &ray);
+    Shape *shape {nullptr};
+    Material *material {nullptr};
+    Texture *texture {nullptr};
+
+    Object3d();
+    Object3d(Shape *, Material *);
+
+    Ray hit (const Ray &ray);
 };
 
 #endif // MINI_RAY_TRACER_OBJECT3D_H

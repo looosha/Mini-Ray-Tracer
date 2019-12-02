@@ -11,7 +11,7 @@ public:
     //constructor
     Sphere(Vector3d center, double radius);
 
-    virtual std::pair<bool, HitRecord> hit(const Ray &ray, double t_min = 0, double t_max = std::numeric_limits <double>::max()) const;
+    virtual std::pair<bool, HitRecord> hit(const Ray &ray, double t_min = 0, double t_max = std::numeric_limits <double>::max()) const override;
 };
 
 #endif // MINI_RAY_TRACER_SPHERE_H

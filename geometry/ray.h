@@ -6,19 +6,19 @@
 
 class Ray {
     Vector3d origin, direction;
-    Vector3d attenuation;
+    Color attenuation {1.0, 1.0, 1.0};
 public:
     //constructors
     Ray();
-    Ray(Vector3d origin, Vector3d direction, Vector3d attenuation);
+    Ray(Vector3d origin, Vector3d direction, Color attenuation = Color(1.0, 1.0, 1.0));
 
     //accessors
     Vector3d getOrigin() const;
     Vector3d getDirection() const;
     Vector3d getPoint(double t) const;
-    Vector3d getAttenuation() const;
+    Color getAttenuation() const;
 
-    Vector3d attenuate();
+    Color attenuate(const Color &) const;
 };
 
 #endif // MINI_RAY_TRACER_RAY_H

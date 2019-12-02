@@ -1,16 +1,11 @@
+#include <utility>
 #include "../lambertian.h"
 
-Lambertian::Lambertian(Vector3d albedo) : albedo(albedo) {}
+Lambertian::Lambertian(Color albedo) : albedo(albedo) {}
 
+/**
+ * Returns a random direction from the hit point attenuating the incident ray
+ */
 std::pair<bool, Ray> Lambertian::scatter(const Ray &ray, HitRecord &record) const {
-    std::pair<bool, Ray> pair;
-
-    //Move the random point obtained in random_inside_unit_sphere() inside the unit sphere that is tangent to the hit_point externally.
-    //This new point will help to set a direction for the scattered ray.
-    Vector3d scatter_point = record.hit_point + record.normal + random_inside_unit_sphere();
-    //Get the scattered ray.
-    pair.second = Ray(record.hit_point, scatter_point - record.hit_point, albedo);
-
-    pair.first = true;
-    return pair;
+    return std::make_pair(true, Ray(record.hit_point, record.normal + random_inside_unit_sphere(), ray.attenuate(albedo)));
 }

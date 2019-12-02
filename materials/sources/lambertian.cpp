@@ -1,4 +1,4 @@
-#include "lambertian.h"
+#include "../lambertian.h"
 
 Lambertian::Lambertian(Vector3d albedo) : albedo(albedo) {}
 

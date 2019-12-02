@@ -1,5 +1,5 @@
 #include <cmath>
-#include "camera.h"
+#include "../camera.h"
 /**
  * Just a bunch of geometric calculations
  * Operator ^ for vectors stands for cross product

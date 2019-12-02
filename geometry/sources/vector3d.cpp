@@ -1,8 +1,8 @@
 #include <cmath>
 #include <stdexcept>
-#include "vector3d.h"
-#include "util.h"
-#include "color.h"
+#include "../vector3d.h"
+#include "../../util/util.h"
+#include "../color.h"
 
 Vector3d::Vector3d() : Tuple3f() {}
 

@@ -1,7 +1,7 @@
 #ifndef MINI_RAY_TRACER_LAMBERTIAN_H
 #define MINI_RAY_TRACER_LAMBERTIAN_H
 
-#include "../object3d.h"
+#include "../runtime/object3d.h"
 
 class Lambertian : public Material {
     Vector3d albedo;

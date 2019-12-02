@@ -1,4 +1,4 @@
-#include "object3d.h"
+#include "../object3d.h"
 
 Vector3d Material::random_inside_unit_sphere() const {
     Vector3d point;

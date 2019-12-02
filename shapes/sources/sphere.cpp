@@ -1,5 +1,5 @@
 #include <cmath>
-#include "sphere.h"
+#include "../sphere.h"
 
 Sphere::Sphere(Vector3d center, double radius) : center(center), radius(radius) {};
 

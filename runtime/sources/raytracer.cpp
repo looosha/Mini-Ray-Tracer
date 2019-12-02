@@ -1,4 +1,4 @@
-#include "raytracer.h"
+#include "../raytracer.h"
 
 Image::Image(int w, int h) : width(w), height(h), pixels(h, std::vector <Color> (w)) {}
 

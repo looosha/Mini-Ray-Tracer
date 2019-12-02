@@ -1,6 +1,6 @@
 #include <cassert>
-#include "color.h"
-#include "vector3d.h"
+#include "../color.h"
+#include "../vector3d.h"
 
 unsigned  char Color::to_discrete(double d) {
     return static_cast <unsigned char> (d * 255.99);

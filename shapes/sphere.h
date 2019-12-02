@@ -1,7 +1,7 @@
 #ifndef MINI_RAY_TRACER_SPHERE_H
 #define MINI_RAY_TRACER_SPHERE_H
 
-#include "../object3d.h"
+#include "../runtime/object3d.h"
 
 class Sphere : public Shape {
     const Vector3d center;

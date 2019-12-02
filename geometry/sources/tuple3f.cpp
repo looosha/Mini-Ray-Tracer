@@ -1,4 +1,4 @@
-#include "tuple3f.h"
+#include "../tuple3f.h"
 #include <stdexcept>
 
 Tuple3f::Tuple3f(): x(0.0), y(0.0), z(0.0) {}

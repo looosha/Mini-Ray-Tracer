@@ -1,10 +1,10 @@
 #ifndef MINI_RAY_TRACER_OBJECT3D_H
 #define MINI_RAY_TRACER_OBJECT3D_H
 
-#include "ray.h"
+#include "../geometry/ray.h"
 #include <utility>
 #include <limits>
-#include "util.h"
+#include "../util/util.h"
 
 struct HitRecord {
     double time;

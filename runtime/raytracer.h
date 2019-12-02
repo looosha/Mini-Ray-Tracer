@@ -6,14 +6,14 @@
 #include <vector>
 #include <cmath>
 
-#include "external/stb_image_write.h"
+#include "../external/stb_image_write.h"
 
 #include "object3d.h"
-#include "camera.h"
-#include "ray.h"
-#include "color.h"
-#include "shapes/sphere.h"
-#include "util.h"
+#include "../geometry/camera.h"
+#include "../geometry/ray.h"
+#include "../geometry/color.h"
+#include "../shapes/sphere.h"
+#include "../util/util.h"
 
 class Image {
     const int width;

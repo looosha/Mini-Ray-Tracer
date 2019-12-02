@@ -1,10 +1,10 @@
 #include <iostream>
 
 #define STB_IMAGE_WRITE_IMPLEMENTATION
-#include "raytracer.h"
-#include "color.h"
-#include "shapes/sphere.h"
-#include "util.h"
+#include "../runtime/raytracer.h"
+#include "../geometry/color.h"
+#include "../shapes/sphere.h"
+#include "../util/util.h"
 
 std::ostream & operator << (std::ostream &out, const Vector3d &c) {
     out << "(" << c.getX() << " " << c.getY() << " " << c.getZ() << ")";

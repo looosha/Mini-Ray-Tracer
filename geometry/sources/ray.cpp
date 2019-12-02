@@ -1,4 +1,4 @@
-#include "ray.h"
+#include "../ray.h"
 
 Ray::Ray() : origin(), direction(), attenuation() {}
 Ray::Ray(Vector3d origin, Vector3d direction, Vector3d attenuation) : origin(origin), direction(direction), attenuation(attenuation) {}

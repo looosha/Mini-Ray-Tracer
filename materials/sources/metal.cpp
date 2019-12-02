@@ -1,4 +1,4 @@
-#include "metal.h"
+#include "../metal.h"
 
 Metal::Metal(Vector3d albedo, double f) : albedo(albedo) {
     fuzziness = (f < 1) ? f : 1;

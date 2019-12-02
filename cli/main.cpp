@@ -9,7 +9,7 @@
 int main() {
     const int width = 400;
     const int height = 200;
-    const int precision = 16;
+    const int precision = 50;
     const int depth = 4;
 
     RayTracer tracer;

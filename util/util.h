@@ -4,6 +4,7 @@
 ///Compilation of useful tools
 #include <limits>
 #include <random>
+#include "../geometry/vector3d.h"
 
 namespace utils {
     namespace floatcmp {
@@ -17,6 +18,8 @@ namespace utils {
     };
 
     double genRandom(double = 0, double = std::numeric_limits <double>::max());
+
+    Vector3d random_inside_unit_sphere();
 }
 
 #endif // MINI_RAY_TRACER_UTIL_H

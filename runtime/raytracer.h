@@ -15,6 +15,7 @@
 #include "../shapes/sphere.h"
 #include "../materials/lambertian.h"
 #include "../materials/metal.h"
+#include "../materials/dielectric.h"
 #include "../util/util.h"
 
 class Image {

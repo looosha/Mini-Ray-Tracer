@@ -59,6 +59,7 @@ Color colorByGradient(const Ray &ray) {
 }
 
 RayTracer::RayTracer() : camera({0, 0, 0}, {0, 0, -1}, acos(-1) / 2, 2) {
+
     scene.emplace_back(
             new Sphere {Vector3d(0.0, 0.0, -1), 0.5},
             new Lambertian{Color(0.2, 0.2, 0.5)}
@@ -72,12 +73,12 @@ RayTracer::RayTracer() : camera({0, 0, 0}, {0, 0, -1}, acos(-1) / 2, 2) {
             new Lambertian{Color(0.5, 0.2, 0.2)}
     );
     scene.emplace_back(
-            new Sphere {Vector3d(1.0, 0.0, -1.0), 0.3},
-            new Metal {Color(0.5, 0.5, 0.0), 0.5}
+            new Sphere {Vector3d(-1.0, 0.0, -1.0), 0.3},
+            new Metal {Color(1.0, 1.0, 1.0), 0}
     );
     scene.emplace_back(
-            new Sphere {Vector3d(-1.0, 0.0, -1.0), 0.3},
-            new Metal {Color(1.0, 1.0, 1.0), 0.9}
+            new Sphere {Vector3d(1.0, 0.0, -1.0), 0.3},
+            new Dielectric {1.6}
     );
 }
 

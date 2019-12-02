@@ -39,7 +39,7 @@ Image genGradient(const int width, const int height) {
 Color RayTracer::trace(const Ray &ray) {
     HitRecord record;
     if (s.hit(ray, 0, std::numeric_limits <double>::max(), record))
-        return record.point_hitted.getZ() > -1 ? Color(0.26, 0.27, 0.3) : Color(0.99, 0.8, 0.64);
+        return record.hit_point.getZ() > -1 ? Color(0.26, 0.27, 0.3) : Color(0.99, 0.8, 0.64);
         //return static_cast <Color> ((record.normal + Vector3d(1.0, 1.0, 1.0)) / 2);
     Vector3d vec = (ray.getDirection() / ray.getDirection().norm() + Vector3d(1.0, 1.0, 1.0)) / 2;
     return Color(0.0, 0.0, 0.25) + 0.1 * (vec.getX() * Color(1.0, 0.0, 0.0) + (1 - vec.getY()) * Color(0.0, 1.0, 0.0));

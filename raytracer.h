@@ -12,7 +12,7 @@
 #include "camera.h"
 #include "ray.h"
 #include "color.h"
-#include "sphere.h"
+#include "shapes/sphere.h"
 #include "util.h"
 
 class Image {

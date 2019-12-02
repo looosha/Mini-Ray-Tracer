@@ -6,15 +6,19 @@
 
 class Ray {
     Vector3d origin, direction;
-    Color _attenuation;
+    Vector3d attenuation;
 public:
-    Ray(Vector3d origin, Vector3d direction) : origin(origin), direction(direction) {}
+    //constructors
+    Ray();
+    Ray(Vector3d origin, Vector3d direction, Vector3d attenuation);
 
-    Vector3d getOrigin() const {return origin;}
-    Vector3d getDirection() const {return direction;}
-    Vector3d getPoint(double t) const {return origin + direction * t;}
+    //accessors
+    Vector3d getOrigin() const;
+    Vector3d getDirection() const;
+    Vector3d getPoint(double t) const;
+    Vector3d getAttenuation() const;
 
-    Color& attenuation() {return _attenuation;}
+    Vector3d attenuate();
 };
 
 #endif // MINI_RAY_TRACER_RAY_H

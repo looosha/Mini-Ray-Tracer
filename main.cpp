@@ -3,7 +3,7 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "raytracer.h"
 #include "color.h"
-#include "sphere.h"
+#include "shapes/sphere.h"
 #include "util.h"
 
 std::ostream & operator << (std::ostream &out, const Vector3d &c) {

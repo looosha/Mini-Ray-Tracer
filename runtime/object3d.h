@@ -20,6 +20,7 @@ public:
 class Material {
 protected:
     Vector3d random_inside_unit_sphere() const;
+    Vector3d reflect(const Vector3d &v, const Vector3d &normal) const;
 public:
     virtual std::pair<bool, Ray> scatter(const Ray &ray, HitRecord &record) const  = 0;
 };

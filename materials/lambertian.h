@@ -10,6 +10,10 @@ public:
     //constructor
     Lambertian(Vector3d albedo);
 
+    /**
+     * Returns true if a ray scatters when it heats an object surface.
+     * Returns a scattered ray.
+     */
     virtual std::pair<bool, Ray> scatter(const Ray &ray, HitRecord &record) const;
 };
 

@@ -1,4 +1,5 @@
 #include "../object3d.h"
+#include <cmath>
 
 Vector3d Material::random_inside_unit_sphere() const {
     Vector3d point;
@@ -10,3 +11,8 @@ Vector3d Material::random_inside_unit_sphere() const {
 
     return point;
 }
+
+Vector3d Material::reflect(const Vector3d &v, const Vector3d &normal) const {
+    return v - (v * normal) * normal * 2; //We will use that vector (or point) to set a direction for the reflected ray.
+}
+

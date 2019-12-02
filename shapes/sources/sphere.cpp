@@ -4,9 +4,9 @@
 Sphere::Sphere(Vector3d center, double radius) : center(center), radius(radius) {};
 
 std::pair<bool, HitRecord> Sphere:: hit(const Ray &ray, double t_min, double t_max) const {
-    std::pair<bool, HitRecord> pair;
+    std::pair<bool, HitRecord> result;
     HitRecord record;
-    pair.first = false;
+    result.first = false;
 
     Vector3d v = ray.getOrigin() - center;
     double a = ray.getDirection() * ray.getDirection();
@@ -19,18 +19,18 @@ std::pair<bool, HitRecord> Sphere:: hit(const Ray &ray, double t_min, double t_m
             record.time = root;
             record.hit_point = ray.getPoint(root);
             record.normal = (record.hit_point - center) / radius;
-            pair.first = true;
+            result.first = true;
         }
         root = (-b + sqrt(discriminant)) / a;
         if (t_min < root && root < t_max) {
             record.time = root;
             record.hit_point = ray.getPoint(root);
             record.normal = (record.hit_point - center) / radius;
-            pair.first = true;
+            result.first = true;
         }
     }
-    pair.second = record;
-    return pair;
+    result.second = record;
+    return result;
 }
 
 

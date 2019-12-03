@@ -58,7 +58,7 @@ Color colorByGradient(const Ray &ray) {
     return vec.getY() * Color(0.5, 0.7, 1.0) + (1 - vec.getY()) * Color(1.0, 1.0, 1.0);
 }
 
-RayTracer::RayTracer() : camera({0, 0, 0}, {0, 0, -1}, acos(-1) / 2, 2) {
+RayTracer::RayTracer() {
 
     scene.emplace_back(
             new Sphere {Vector3d(0.0, 0.0, -1), 0.5},
@@ -77,7 +77,7 @@ RayTracer::RayTracer() : camera({0, 0, 0}, {0, 0, -1}, acos(-1) / 2, 2) {
             new Metal {Color(1.0, 1.0, 1.0), 0}
     );
     scene.emplace_back(
-            new Sphere {Vector3d(1.0, 0.0, -1.0), 0.3},
+            new Sphere {Vector3d(1.0, 0.0, -1.0), -0.3},
             new Dielectric {1.6}
     );
 }
@@ -104,6 +104,7 @@ Color RayTracer::trace(const Ray &ray, int depth) {
 Image RayTracer::snapshot(int res_w, int res_h, int antialiasing, int depth) {
     Image image = genGradient(res_w, res_h);
 
+    Camera camera({0, 0, 1}, {0, 0, -1}, acos(-1) / 2, res_w / double(res_h));
     for (int x = 0; x < res_w; ++x) {
         for (int y = 0; y < res_h; ++y) {
             Color avgColor{0.0, 0.0, 0.0};

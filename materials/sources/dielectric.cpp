@@ -18,19 +18,19 @@ std::pair<bool, Vector3d> Dielectric::refract(const Vector3d &v, const Vector3d 
     double cosine;
     double reflect_prob;
 
-    /**
-     * First case when the ray is initially outside of the object and comes from the medium with the refraction index = 1 (vacuum).
-     * In this project we treat air as a vacuum, because air has a reflection index close to 1.
-     */
     if (v * normal > 0) {
+        /**
+         * First case when the ray is initially outside of the object and comes from the medium with the refraction index = 1 (vacuum).
+         * In this project we treat air as a vacuum, because air has a reflection index close to 1.
+         */
         refr_norm = -normal;
         refr_index_ratio = refractive_index / 1.0;
         cosine = (v * normal) / v.norm() * refractive_index;
     }
+    else {
         /**
          * Another case when the ray is initially inside of the object and enters vacuum.
          */
-    else {
         refr_norm = normal;
         refr_index_ratio = 1.0 / refractive_index;
         cosine = - (v * normal) / v.norm();
@@ -45,29 +45,28 @@ std::pair<bool, Vector3d> Dielectric::refract(const Vector3d &v, const Vector3d 
 
     if (discriminant > 0) {
         Vector3d refr_direction = refr_index_ratio * (v / v.norm() - refr_norm * cos_initial) - refr_norm * sqrt(discriminant);
-
         /**
-         * There we count a probability of the ray to be reflected by Schlick's approximation.
+         * Here we count a probability of the ray to be reflected using Schlick's approximation.
          */
         reflect_prob = schlick_approx(cosine);
 
-        /**
-         * In this case, the ray will not refract but reflect, therefore we return a false value.
-         */
         if (utils::genRandom(0, 1) < reflect_prob) {
+            /**
+             * In this case, the ray will not refract but reflect, therefore we return a false value.
+             */
             return std::make_pair(false, Vector3d());
         }
+        else {
             /**
              * In this case, the ray will refract.
              */
-        else {
             return std::make_pair(true, refr_direction);
         }
     }
+    else {
         /**
          * In this case, the ray will not refract but reflect, therefore we return a false value.
          */
-    else {
         return std::make_pair(false, Vector3d());
     }
 }
@@ -80,15 +79,14 @@ std::pair<bool, Ray> Dielectric::scatter(const Ray &ray, HitRecord &record) cons
          * Now get the scattered, in this case refracted ray.
          */
         result.second = Ray(record.hit_point, refr.second, ray.getAttenuation());
-        result.first = true;
     }
     else {
         /**
          * Get the scattered, in this case reflected ray.
          */
         result.second = Ray(record.hit_point, reflect(ray.getDirection(), record.normal), ray.getAttenuation());
-        result.first = result.second.getDirection() * record.normal > 0;
     }
 
+    result.first = true;
     return result;
 }

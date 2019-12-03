@@ -33,8 +33,6 @@ public:
 Image genGradient(const int width, const int height);
 
 class RayTracer {
-    Camera camera;
-
     std::vector <Object3d> scene;
 
     Color trace(const Ray &ray, int depth);

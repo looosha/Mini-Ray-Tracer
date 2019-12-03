@@ -19,5 +19,5 @@ int main() {
     auto finish = std::chrono::steady_clock::now();
 
     std::cerr << "Final resolution: " << width << "x" << height << ", antl-aliasing level: " << precision << ", reflection depth: " << depth << "\n";
-    std::cerr << "Finished in " << std::chrono::duration <double> (finish - start).count() << "\n";
+    std::cerr << "Finished in " << std::chrono::duration <double> (finish - start).count() << "s\n";
 }

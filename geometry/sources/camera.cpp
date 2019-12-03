@@ -1,5 +1,7 @@
 #include <cmath>
 #include "../camera.h"
+#include "../../util/util.h"
+
 /**
  * Just a bunch of geometric calculations
  * Operator ^ for vectors stands for cross product
@@ -7,11 +9,13 @@
 void Camera::setScreen(double field_of_view, double aspect_ratio) {
     double height = (screen_center - pov).norm() * tan(field_of_view / 2) * 2;
     double weight = height * aspect_ratio;
-    wide_side = (screen_center - pov) ^ upwards;
-    wide_side = wide_side / wide_side.norm() * weight;
-    high_side = wide_side ^ (screen_center - pov);
-    high_side = high_side / high_side.norm() * height;
-    lower_left_corner = screen_center - high_side / 2 - wide_side / 2;
+    horizontal = (screen_center - pov) ^ upwards;
+    unit_h = horizontal / horizontal.norm();
+    horizontal = unit_h * weight;
+    vertical = horizontal ^ (screen_center - pov);
+    unit_v = vertical / vertical.norm();
+    vertical = unit_v * height;
+    lower_left_corner = screen_center - vertical / 2 - horizontal / 2;
 }
 
 Camera::Camera() {}
@@ -24,9 +28,16 @@ Camera::Camera(Vector3d pov, Vector3d look_at, double field_of_view, double aspe
     setScreen(field_of_view, aspect_ratio);
 }
 
+Camera::Camera(Vector3d pov, Vector3d look_at, double field_of_view, double aspect_ratio, double aperture)
+    : pov(pov), screen_center(look_at), lens_radius(aperture / 2) {
+    setScreen(field_of_view, aspect_ratio);
+}
+
 Ray Camera::getRay(double x, double y) const {
+    Vector3d shift = lens_radius * utils::random_inside_unit_disk();
+    Vector3d origin = pov + shift.getX() * horizontal + shift.getY() * vertical;
     return Ray (
-            pov,
-            lower_left_corner + x * wide_side + y * high_side - pov
+            origin,
+            lower_left_corner + x * horizontal + y * vertical - origin
             );
 }

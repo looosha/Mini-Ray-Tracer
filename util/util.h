@@ -8,7 +8,7 @@
 
 namespace utils {
     namespace floatcmp {
-        const double EPS = 1e-7;
+        const double EPS = 1e-10;
 
         bool isLess(double lhs, double rhs);
 
@@ -18,6 +18,8 @@ namespace utils {
     };
 
     double genRandom(double = 0, double = std::numeric_limits <double>::max());
+
+    Vector3d random_inside_unit_disk();
 
     Vector3d random_inside_unit_sphere();
 }

@@ -18,6 +18,22 @@ double utils::genRandom(double lb, double rb) {
     return distribution(randomEngine);
 }
 
+Vector3d utils::random_inside_unit_disk() {
+    Vector3d point;
+    do {
+        /**
+         * Get a random point inside the cube [-1, 1] x [-1, 1] x [0, 0].
+         */
+        point = Vector3d(utils::genRandom(-1, 1), utils::genRandom(-1, 1), 0);
+    }
+    /**
+     * Check whether this random point is inside the unit disk on the x-y plane centered at the origin and has sufficient length.
+     */
+    while (!utils::floatcmp::isLess(point.norm(), 1.0) || !utils::floatcmp::isGreater(point.norm(), 0.1));
+
+    return point;
+}
+
 Vector3d utils::random_inside_unit_sphere() {
     Vector3d point;
     do {

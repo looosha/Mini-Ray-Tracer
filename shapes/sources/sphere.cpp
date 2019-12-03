@@ -13,6 +13,7 @@ std::pair<bool, HitRecord> Sphere:: hit(const Ray &ray, double t_min, double t_m
     if (discriminant > 0) {
         for (int sign = -1; sign <= 1; sign += 2) {
             double root = (-b + sign * sqrt(discriminant)) / a;
+            //if (t_min < root && root < t_max) {
             if (utils::floatcmp::isLess(t_min, root) && utils::floatcmp::isLess(root, t_max)) {
                 HitRecord record;
                 record.time = root;

@@ -8,8 +8,8 @@
 #include "../util/util.h"
 
 int main() {
-    const int width = 600;
-    const int height = 400;
+    const int width = 1200;
+    const int height = 800;
     const int precision = 10;
     const int depth = 5;
 

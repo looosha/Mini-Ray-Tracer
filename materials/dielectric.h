@@ -11,16 +11,10 @@ public:
     Dielectric(double refractive_index);
 
     /**
-     * Polynomial approximation by Christophe Schlick describes how dielectric reflectivity varies with angle.
-     * To be more precise, this approximation counts a probability of a ray to be reflected when it heats an object surface.
+     * Computes the Fresnel coefficients for reflection and refraction for a randomly polarized ray.
      */
-    double schlick_approx(double cosine) const;
+    double fresnel_coeff(double n1, double n2, double cosI, double cosT) const;
 
-    /**
-     * Returns true if a ray refracts when it heats an object surface. In other case, this ray reflects.
-     * If the first returned value is true, returns refracted vector. Otherwise, returns an origin (0, 0, 0).
-     */
-    std::pair<bool, Vector3d> refract(const Vector3d &v, const Vector3d &normal) const;
 
     /**
      * Returns true if a ray scatters (reflects or refracts) when it heats an object surface.

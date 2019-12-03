@@ -62,7 +62,7 @@ RayTracer::RayTracer() {
 
     scene.emplace_back(
             new Sphere {Vector3d(0.0, 0.0, -1), 0.5},
-            new Lambertian{Color(0.2, 0.2, 0.5)}
+            new Dielectric{1.2}
     );
     scene.emplace_back(
             new Sphere {Vector3d(0.0, -50.0, -1), 49},
@@ -77,8 +77,8 @@ RayTracer::RayTracer() {
             new Metal {Color(1.0, 1.0, 1.0), 0}
     );
     scene.emplace_back(
-            new Sphere {Vector3d(1.0, 0.0, -1.0), -0.3},
-            new Dielectric {1.6}
+            new Sphere {Vector3d(1.0, 0.0, -1.0), 0.3},
+            new Dielectric {1.05}
     );
 }
 

@@ -20,6 +20,11 @@ AABB::AABB(const AABB &b1, const AABB &b2) {
     };
 }
 
+/**
+ * Calculates the coordinate of a "hit" - ray-object intersection
+ * Intersects time segments for each axis
+ * Doesn't record the result for increased performance
+ */
 bool AABB::hit(const Ray &ray, double t_min, double t_max) const {
     int side_min = -1, side_max = -1;
     for (int i = 0; i < 3; ++i) {
@@ -36,6 +41,10 @@ bool AABB::hit(const Ray &ray, double t_min, double t_max) const {
     return (t_min < t_max && (side_min != -1 || side_max != -1));
 }
 
+/**
+ * Calculates the coordinate of a "hit" - ray-object intersection
+ * Intersects time segments for each axis
+ */
 bool AABB::hit(const Ray &ray, double t_min, double t_max, HitRecord &result) const {
     int side_min = -1, side_max = -1;
     for (int i = 0; i < 3; ++i) {

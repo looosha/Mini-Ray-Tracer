@@ -1,9 +1,10 @@
 #ifndef MINI_RAY_TRACER_TUPLE3F_H
 #define MINI_RAY_TRACER_TUPLE3F_H
 
-///A class supporting a tuple of 3 floating point values
-///Intended to be used as a base class
-
+/**
+ * A tuple of 3 floating point values
+ * Intended to be used as a base class
+*/
 class Tuple3f {
 protected:
     double x, y, z;

@@ -3,6 +3,11 @@
 
 #include "tuple3f.h"
 
+/**
+ * Store a color under an 8-bit RGB scheme
+ * Each value might be regarded as an 0-255 integer or a 0-1 real number
+ * Supports simple arithmetic
+ */
 class Color : public Tuple3f {
     static unsigned char to_discrete(double);
     static double to_continuous(unsigned char);

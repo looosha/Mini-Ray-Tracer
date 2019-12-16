@@ -3,7 +3,8 @@
 
 #include "../runtime/object3d.h"
 
-/** A simple 3d sphere
+/**
+ * A simple 3d sphere
  */
 class Sphere : public Shape {
     Vector3d center;

@@ -6,8 +6,14 @@
 #include <random>
 #include "../geometry/vector3d.h"
 
+/**
+ * Small general purporse utilities
+ */
 namespace utils {
-    namespace floatcmp {
+    /**
+     * @brief Avoiding precision-related comparison errors
+     */
+     namespace floatcmp {
         const double EPS = 1e-10;
 
         bool isLess(double lhs, double rhs);
@@ -23,9 +29,19 @@ namespace utils {
         };
     };
 
-    double genRandom(double = 0, double = std::numeric_limits <double>::max());
+    /**
+     * @param lb The lower bound of the range
+     * @param rb The upper bound of the range
+     * @returns A random real number in the given range with uniform probability
+     */
+    double genRandom(double lb = 0, double rb = std::numeric_limits <double>::max());
 
-    int genIntRandom(int = 0, int = std::numeric_limits <int>::max());
+    /**
+     * @param lb The lower bound of the range
+     * @param rb The upper bound of the range
+     * @returns A random integer in the given range with uniform probability
+     */
+    int genIntRandom(int lb = 0, int rb = std::numeric_limits <int>::max());
 
     Vector3d random_inside_unit_disk();
 

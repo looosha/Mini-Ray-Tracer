@@ -4,6 +4,11 @@
 #include "vector3d.h"
 #include "color.h"
 
+/**
+ * Stores a 3d-ray in a parametric form origin + t * direction
+ * Read-only functionality
+ * Attenuation describes the coefficients of current amount of attenuated light for each color
+ */
 class Ray {
     Vector3d origin, direction;
     Color attenuation {1.0, 1.0, 1.0};

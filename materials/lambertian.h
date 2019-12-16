@@ -3,16 +3,21 @@
 
 #include "../runtime/object3d.h"
 
+/**
+ * A matte surface obeying Lambertian reflectance
+ */
 class Lambertian : public Material {
     Color albedo;
 
 public:
-    //constructor
-    Lambertian(Color albedo);
     /**
-      * Returns true if a ray scatters when it heats an object surface.
-      * Returns a scattered ray.
-      */
+     * @param albedo the color of the surface
+     */
+    Lambertian(Color albedo);
+
+    /**
+     * @brief Produces an attenuated ray in a random direction
+     */
     virtual std::pair<bool, Ray> scatter(const Ray &ray, const HitRecord &record) const;
 };
 

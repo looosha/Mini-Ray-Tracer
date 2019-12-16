@@ -18,7 +18,7 @@ public:
 
     void setScreen(double field_of_view, double aspect_ratio);
     /**
-     * Sets the camera at the given position
+     * @brief Sets the camera at the given position
      * The camera is located at the pov looking at screen_center
      * pov, screen_center, screen_center + upwards and screen_center + vertical/2 lie in the same plane
      * field_of_view is the angle between the lower and upper bounds of te screen given in radians
@@ -30,7 +30,7 @@ public:
     Camera(Vector3d pov, Vector3d look_at, double field_of_view, double aspect_ratio, double aperture, double focus_dist);
 
     /**
-     * Returns the ray passing through the given [x, y] coordinate relative to the screen.
+     * @brief Returns the ray passing through the given [x, y] coordinate relative to the screen.
      * Coordinates are floating point values in the [0, 1] interval
      */
     Ray getRay (double, double) const;

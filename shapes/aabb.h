@@ -3,8 +3,10 @@
 
 #include "../runtime/object3d.h"
 
-/** Axis-Aligned Bounding Box
+/**
+ * Axis-Aligned Bounding Box
  * A rectangle with sides parallel to the axes, commonly used for ray-tracing purposes
+ * Stores opposite corners of the rectangle with minimal and maximal coordinates for each axis
  */
 class AABB : public Shape {
     Vector3d min_corner, max_corner;

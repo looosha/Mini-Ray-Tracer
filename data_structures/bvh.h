@@ -13,7 +13,6 @@
  * By checking an intersection with the nodes boundary unnecessary checks can be avoided
  * A heuristic that only improves performance in a general case, without affecting worst-case scenario
  */
-
 class BVH {
     class Node {
     public:
@@ -24,6 +23,10 @@ class BVH {
         Node(Object3d);
         Node(Node*, Node*);
 
+        /**
+         * @brief Finds the closest object intersecting the given ray recursively
+         * @returns The closes object in the subtree or empty object in case ray doesn't intersect any
+         */
         Object3d intersect(const Ray &, double, double, HitRecord &) const;
     } *root;
 
@@ -33,16 +36,26 @@ class BVH {
     const int MAX_TREE_SIZE_FACTOR = 4;
     std::vector <Node> cache;
 
-    Node* build(std::vector <Object3d>);
-public:
     /**
-    * A vector of the objects to contain is provided to build the tree
-    */
+     * @brief Builds the tree recursively using the Divide and Conquer approach
+     * @param data The list of objects to build the current subtree on
+     * @returns The pointer to the root node of the subtree
+     */
+    Node* build(std::vector <Object3d> data);
+public:
     BVH();
     BVH(const std::vector <Object3d> &);
-    void init(const std::vector <Object3d> &);
 
+    /**
+     * @brief Allocates enough space for the tree and starts the recursion
+     * @param data The list of objects to build the tree on
+     */
+    void init(const std::vector <Object3d> &data);
 
+    /**
+     * @brief Finds the closest object intersecting the given ray
+     * @returns The closes object or empty object in case ray doesn't intersect any
+     */
     Object3d intersect(const Ray &, double, double, HitRecord &) const;
 };
 

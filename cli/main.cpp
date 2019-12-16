@@ -21,5 +21,4 @@ int main() {
 
     std::cerr << "Final resolution: " << width << "x" << height << ", antl-aliasing level: " << precision << ", reflection depth: " << depth << "\n";
     std::cerr << "Finished in " << std::chrono::duration <double> (finish - start).count() << "s\n";
-    std::cerr << "of which initialization took " << std::chrono::duration <double> (init - start).count() << "s\n";
 }

@@ -6,9 +6,6 @@ void Image::setPixel(int x, int y, Color col) {
     pixels[y][x] = col;
 }
 
-/**
- * Add a filter to the image to slightly improves its quality
- */
 void Image::postProd() {
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
@@ -17,9 +14,6 @@ void Image::postProd() {
     }
 }
 
-/**
- * Outputs the image in a png format
- */
 void Image::writeToFile(std::string filename) const {
     std::vector <unsigned char> serialized(width * height * 3);
 
@@ -97,17 +91,10 @@ RayTracer::RayTracer() {
     scene_cache.emplace_back(new Sphere(Vector3d(6, 1, 0), 0.3), new Metal(Color(0.7, 0.6, 0.5), 0.0));
 }
 
-/**
- * Adds an object to the scene
- */
 void RayTracer::addToScene(const Object3d &obj) {
     scene_cache.emplace_back(obj);
 }
 
-/**
- * Traces the path of a given ray recursively
- * @param ray
- */
 Color RayTracer::trace(const Ray &ray, int depth) {
     HitRecord hit_result;
     Object3d closest = scene_tree.intersect(ray, utils::floatcmp::EPS, MAX_TIME, hit_result);
@@ -121,7 +108,6 @@ Color RayTracer::trace(const Ray &ray, int depth) {
 }
 
 /**
- * Produces the snapshot with given settings and current scene configuration
  * The color for each pixel is traced individually
  * For advanced effects (including anti-aliasing) multiple rays are averaged after being sent through a given pixel
  */

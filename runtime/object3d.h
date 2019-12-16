@@ -47,7 +47,7 @@ public:
 class Material {
 protected:
     /**
-     * @brief Returns a minimal axis-aligned paralelipiped containing the object
+     * @brief Returns a minimal axis-aligned parallelepiped containing the object
      * @returns The coordinates opposite vertices of the rectangle
     */
     Vector3d reflect(const Vector3d &v, const Vector3d &normal) const;

@@ -4,6 +4,9 @@
 #include "tuple3f.h"
 #include <iostream>
 
+/** Generic 3d-vector class
+ * Supports all the according geometric and algebraic operations
+ */
 class Vector3d : public Tuple3f {
 public:
     ///constructors

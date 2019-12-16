@@ -13,16 +13,26 @@ bool utils::floatcmp::isEqual(double lhs, double rhs) {
 }
 
 double utils::genRandom(double lb, double rb) {
-    static std::mt19937 randomEngine;
+    static std::mt19937 random_engine;
     std::uniform_real_distribution <double> distribution(lb, rb);
-    return distribution(randomEngine);
+    return distribution(random_engine);
+}
+
+int utils::genIntRandom(int lb, int rb) {
+    static std::mt19937 random_engine;
+    std::uniform_int_distribution <int> distribution(lb, rb);
+    return distribution(random_engine);
+}
+
+bool utils::floatcmp::fraction::operator < (const fraction &rhs) const {
+    return isLess(numerator * rhs.denominator, rhs.numerator * denominator);
 }
 
 Vector3d utils::random_inside_unit_disk() {
     Vector3d point;
     do {
         /**
-         * Get a random point inside the cube [-1, 1] x [-1, 1] x [0, 0].
+         * Get a random point inside the square [-1, 1] x [-1, 1] x [0, 0].
          */
         point = Vector3d(utils::genRandom(-1, 1), utils::genRandom(-1, 1), 0);
     }

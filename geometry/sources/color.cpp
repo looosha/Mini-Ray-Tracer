@@ -2,7 +2,7 @@
 #include "../color.h"
 #include "../vector3d.h"
 
-unsigned  char Color::to_discrete(double d) {
+unsigned char Color::to_discrete(double d) {
     return static_cast <unsigned char> (d * 255.99);
 }
 
@@ -21,14 +21,8 @@ Color::Color(int r, int g, int b)  {
     z = to_continuous(b);
 }
 
-unsigned char Color::getR() const {return to_discrete(x);}
-
-unsigned char Color::getG() const {return to_discrete(y);}
-
-unsigned char Color::getB() const {return to_discrete(z);}
-
 Color Color::operator + (const Color &rhs) const {
-    return Color(x + rhs.getX(), y + rhs.getY(), z + rhs.getZ());
+    return Color(x + rhs.x, y + rhs.y, z + rhs.z);
 }
 
 Color Color::operator / (double c) const {
@@ -47,9 +41,9 @@ Color::operator class Vector3d() {
 }
 
 Color operator * (const Color &col, double c) {
-    return Color(c * col.getX(), c * col.getY(), c * col.getZ());
+    return Color(c * col.x, c * col.y, c * col.z);
 }
 
 Color operator * (double c, const Color &col) {
-    return Color(c * col.getX(), c * col.getY(), c * col.getZ());
+    return Color(c * col.x, c * col.y, c * col.z);
 }

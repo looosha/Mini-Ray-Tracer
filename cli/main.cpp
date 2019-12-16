@@ -10,14 +10,16 @@
 int main() {
     const int width = 1200;
     const int height = 800;
-    const int precision = 10;
+    const int precision = 100;
     const int depth = 5;
 
     auto start = std::chrono::steady_clock::now();
     RayTracer tracer;
+    auto init = std::chrono::steady_clock::now();
     tracer.snapshot(width, height, precision, depth).writeToFile("img.png");
     auto finish = std::chrono::steady_clock::now();
 
     std::cerr << "Final resolution: " << width << "x" << height << ", antl-aliasing level: " << precision << ", reflection depth: " << depth << "\n";
     std::cerr << "Finished in " << std::chrono::duration <double> (finish - start).count() << "s\n";
+    std::cerr << "of which initialization took " << std::chrono::duration <double> (init - start).count() << "s\n";
 }

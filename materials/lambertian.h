@@ -13,7 +13,7 @@ public:
       * Returns true if a ray scatters when it heats an object surface.
       * Returns a scattered ray.
       */
-    virtual std::pair<bool, Ray> scatter(const Ray &ray, HitRecord &record) const;
+    virtual std::pair<bool, Ray> scatter(const Ray &ray, const HitRecord &record) const;
 };
 
 #endif // MINI_RAY_TRACER_LAMBERTIAN_H

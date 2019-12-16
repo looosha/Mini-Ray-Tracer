@@ -5,6 +5,8 @@
 
 class Dielectric : public Material {
     double refractive_index;
+    double schlick_approx(double cosine) const;
+    std::pair<bool, Vector3d> refract(const Vector3d &v, const Vector3d &normal) const;
 
 public:
     //constructor
@@ -20,7 +22,7 @@ public:
      * Returns true if a ray scatters (reflects or refracts) when it heats an object surface.
      * Returns a scattered (reflected or refracted) ray.
      */
-    virtual std::pair<bool, Ray> scatter(const Ray &ray, HitRecord &record) const;
+    virtual std::pair<bool, Ray> scatter(const Ray &ray, const HitRecord &record) const;
 };
 
 #endif //MINI_RAY_TRACER_DIELECTRIC_H

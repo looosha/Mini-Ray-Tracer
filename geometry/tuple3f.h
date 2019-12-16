@@ -12,16 +12,14 @@ public:
     Tuple3f(double f1, double f2, double f3);
 
     ///accessors
-    double getX() const;
-    double getY() const;
-    double getZ() const;
+    inline double getX() const {return x;}
+    inline double getY() const {return y;}
+    inline double getZ() const {return z;}
 
     ///mutators
     void setX(double);
     void setY(double);
     void setZ(double);
-
-    double& operator [] (int index); ///return a reference to member #index
 };
 
 #endif // MINI_RAY_TRACER_TUPLE3F_H

@@ -26,8 +26,8 @@ public:
      */
     Camera();
     Camera(double field_of_view, double aspect_ratio);
-    Camera(Vector3d pov, Vector3d look_at, double field_of_view, double aspect_ratio);
     Camera(Vector3d pov, Vector3d look_at, double field_of_view, double aspect_ratio, double aperture);
+    Camera(Vector3d pov, Vector3d look_at, double field_of_view, double aspect_ratio, double aperture, double focus_dist);
 
     /**
      * Returns the ray passing through the given [x, y] coordinate relative to the screen.

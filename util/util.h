@@ -15,9 +15,17 @@ namespace utils {
         bool isGreater(double lhs, double rhs);
 
         bool isEqual(double lhs, double rhs);
+
+        struct fraction {
+            double numerator, denominator;
+
+            bool operator < (const fraction &rhs) const;
+        };
     };
 
     double genRandom(double = 0, double = std::numeric_limits <double>::max());
+
+    int genIntRandom(int = 0, int = std::numeric_limits <int>::max());
 
     Vector3d random_inside_unit_disk();
 

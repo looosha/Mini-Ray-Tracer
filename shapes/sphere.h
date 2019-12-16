@@ -3,15 +3,20 @@
 
 #include "../runtime/object3d.h"
 
+/** A simple 3d sphere
+ */
 class Sphere : public Shape {
-    const Vector3d center;
-    const double radius;
-
+    Vector3d center;
+    double radius;
 public:
     //constructor
     Sphere(Vector3d center, double radius);
 
-    virtual std::pair<bool, HitRecord> hit(const Ray &ray, double t_min = utils::floatcmp::EPS, double t_max = std::numeric_limits <double>::max()) const override;
+    virtual bool hit(const Ray &ray,
+            double t_min, double t_max, HitRecord &result) const override;
+
+    virtual std::pair <Vector3d, Vector3d> getBoundingBox() const override;
 };
+
 
 #endif // MINI_RAY_TRACER_SPHERE_H

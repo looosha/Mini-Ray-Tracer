@@ -13,9 +13,9 @@ public:
     Color(int r, int g, int b);
 
     ///accessors
-    unsigned char getR() const;
-    unsigned char getG() const;
-    unsigned char getB() const;
+    inline unsigned char getR() const {return to_discrete(x);}
+    inline unsigned char getG() const {return to_discrete(y);}
+    inline unsigned char getB() const {return to_discrete(z);}
 
     Color operator + (const Color &rhs) const; ///addition
     Color operator / (double c) const; ///division by a scalar
@@ -26,9 +26,9 @@ public:
     void setB(int);
 
     explicit operator class Vector3d();///conversion to the Vector3d class
-};
 
-Color operator * (double c, const Color &col); ///left multiplication by a scalar
-Color operator * (const Color &col, double c); ///right multiplication by a scalar
+    friend Color operator * (double c, const Color &col); ///left multiplication by a scalar
+    friend Color operator * (const Color &col, double c); ///right multiplication by a scalar
+};
 
 #endif // MINI_RAY_TRACER_COLOR_H

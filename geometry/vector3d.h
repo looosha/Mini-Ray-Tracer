@@ -2,6 +2,7 @@
 #define MINI_RAY_TRACER_VECTOR3D_H
 
 #include "tuple3f.h"
+#include <iostream>
 
 class Vector3d : public Tuple3f {
 public:
@@ -10,9 +11,11 @@ public:
     Vector3d(double x, double y, double z);
 
     ///accessors
-    inline double norm() const; ///vector norm
-    Vector3d operator - () const; ///negation
+    double norm() const; ///vector norm
+    const double& operator [] (int index) const; ///return the value of the member #index
+    double& operator [] (int index); ///return a reference to member #index
 
+    Vector3d operator - () const; ///negation
     Vector3d operator + (const Vector3d &rhs) const; ///summation
     Vector3d operator - (const Vector3d &rhs) const; ///difference
     Vector3d operator / (double c) const; ///division by a scalar
@@ -26,12 +29,14 @@ public:
     Vector3d operator /= (double c); ///division by a scalar assignment
     Vector3d operator ^= (const Vector3d &rhs); ///cross product assignment
 
+    ///external
     explicit operator class Color(); ///conversion to the Color class
+
+    friend Vector3d operator * (double c, const Vector3d &vec); ///left multiplication by a scalar
+    friend Vector3d operator * (const Vector3d &vec, double c); ///right multiplication by a scalar
+    friend std::ostream & operator << (std::ostream &, const Vector3d &); ///Outputs the vector to a stream
+
+    friend double getAngle(const Vector3d &v1, const Vector3d &v2); ///angle between two vectors in radians
 };
-
-Vector3d operator * (double c, const Vector3d &vec); ///left multiplication by a scalar
-Vector3d operator * (const Vector3d &vec, double c); ///right multiplication by a scalar
-
-double getAngle(const Vector3d &v1, const Vector3d &v2); ///angle between two vectors in radians
 
 #endif // MINI_RAY_TRACER_VECTOR3D_H

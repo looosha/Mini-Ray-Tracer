@@ -8,8 +8,21 @@ Vector3d::Vector3d() : Tuple3f() {}
 
 Vector3d::Vector3d(double x, double y, double z) : Tuple3f(x, y, z) {}
 
-inline double Vector3d::norm() const {
+double Vector3d::norm() const {
     return std::sqrt(x * x + y * y + z * z);
+}
+
+const double& Vector3d::operator [] (int index) const {
+    switch(index) {
+        case 0: return x;
+        case 1: return y;
+        case 2: return z;
+        default: throw std::range_error("received value out of range");
+    }
+}
+
+double& Vector3d::operator [] (int index) {
+    return const_cast <double &> (static_cast <const Vector3d *> (this) -> operator[](index));
 }
 
 Vector3d Vector3d::operator -() const {
@@ -17,11 +30,11 @@ Vector3d Vector3d::operator -() const {
 }
 
 Vector3d Vector3d::operator + (const Vector3d &rhs) const {
-    return Vector3d(x + rhs.getX(), y + rhs.getY(), z + rhs.getZ());
+    return Vector3d(x + rhs.x, y + rhs.y, z + rhs.z);
 }
 
 Vector3d Vector3d::operator - (const Vector3d &rhs) const {
-    return Vector3d(x - rhs.getX(), y - rhs.getY(), z - rhs.getZ());
+    return Vector3d(x - rhs.x, y - rhs.y, z - rhs.z);
 }
 
 Vector3d Vector3d::operator / (double c) const {
@@ -29,17 +42,16 @@ Vector3d Vector3d::operator / (double c) const {
 }
 
 double Vector3d::operator * (const Vector3d &rhs) const {
-    return x * rhs.getX() + y * rhs.getY() + z * rhs.getZ();
+    return x * rhs.x + y * rhs.y + z * rhs.z;
 }
 
 Vector3d Vector3d::operator ^ (const Vector3d &rhs) const {
     Vector3d v;
-    v.setX(y * rhs.getZ() - z * rhs.getY());
-    v.setY(z * rhs.getX() - x * rhs.getZ());
-    v.setZ(x * rhs.getY() - y * rhs.getX());
+    v.setX(y * rhs.z - z * rhs.y);
+    v.setY(z * rhs.x - x * rhs.z);
+    v.setZ(x * rhs.y - y * rhs.x);
     return v;
 }
-
 
 Vector3d Vector3d::operator += (const Vector3d &rhs) {
     return *this = *this + rhs;
@@ -62,11 +74,16 @@ Vector3d Vector3d::operator ^= (const Vector3d &rhs) {
 }
 
 Vector3d operator * (const Vector3d &vec, double c) {
-    return Vector3d(c * vec.getX(), c * vec.getY(), c * vec.getZ());
+    return Vector3d(c * vec.x, c * vec.y, c * vec.z);
 }
 
 Vector3d operator * (double c, const Vector3d &vec) {
-    return Vector3d(c * vec.getX(), c * vec.getY(), c * vec.getZ());
+    return Vector3d(c * vec.x, c * vec.y, c * vec.z);
+}
+
+std::ostream & operator << (std::ostream &out, const Vector3d &vec) {
+    out << "(" << vec.x << " " << vec.y << " " << vec.z << ")";
+    return out;
 }
 
 double getAngle(const Vector3d &v1, const Vector3d &v2) {

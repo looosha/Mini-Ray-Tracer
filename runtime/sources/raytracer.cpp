@@ -40,12 +40,14 @@ Color colorByGradient(const Ray &ray) {
     return vec.getY() * Color(0.5, 0.7, 1.0) + (1 - vec.getY()) * Color(1.0, 1.0, 1.0);
 }
 
+RayTracer::RayTracer() {}
+
 /**
  * Setting up the scene
  * The configuration is static as of now
  * TODO: configuration should be set by client
  */
-RayTracer::RayTracer() {
+void RayTracer::demoScene() {
     scene_cache.emplace_back(new Sphere(Vector3d(0, -1000, 0), 1000), new Lambertian(Color(0.5, 0.7, 0.5)));
 
     const int k = 10;
@@ -57,17 +59,17 @@ RayTracer::RayTracer() {
                 if (choose_mat < 0.8) {  // diffuse
                     scene_cache.emplace_back(new Sphere(
                             center, 0.2),
-                                       new Lambertian(Color(utils::genRandom(0.0, 1.0) * utils::genRandom(0.0, 1.0),
-                                                            utils::genRandom(0.0, 1.0) * utils::genRandom(0.0, 1.0),
-                                                            utils::genRandom(0.0, 1.0) * utils::genRandom(0.0, 1.0)))
+                                             new Lambertian(Color(utils::genRandom(0.0, 1.0) * utils::genRandom(0.0, 1.0),
+                                                                  utils::genRandom(0.0, 1.0) * utils::genRandom(0.0, 1.0),
+                                                                  utils::genRandom(0.0, 1.0) * utils::genRandom(0.0, 1.0)))
                     );
                 } else if (choose_mat < 0.95) { // metal
                     scene_cache.emplace_back(new Sphere(
                             center, 0.2),
-                                       new Metal(Color(utils::genRandom(0.5, 1.0),
-                                                       utils::genRandom(0.5, 1.0),
-                                                       utils::genRandom(0.5, 1.0)),
-                                                 utils::genRandom(0.0, 0.5))
+                                             new Metal(Color(utils::genRandom(0.5, 1.0),
+                                                             utils::genRandom(0.5, 1.0),
+                                                             utils::genRandom(0.5, 1.0)),
+                                                       utils::genRandom(0.0, 0.5))
                     );
                 } else {  // glass
                     scene_cache.emplace_back(new Sphere(center, 0.2), new Dielectric(1.5));
@@ -80,9 +82,9 @@ RayTracer::RayTracer() {
     scene_cache.emplace_back(new Sphere(Vector3d(-4, 1, 0), 1.0), new Lambertian(Color(0.4, 0.2, 0.1)));
     //scene_cache.emplace_back(new Sphere(Vector3d(4, 1, 0), 1.0), new Metal(Color(0.7, 0.6, 0.5), 0.0));
     scene_cache.emplace_back(new AABB(Vector3d(3.5, 0.5, -0.5), Vector3d(4.5, 1.5, 0.5)),
-                       new Metal(Color(0.85, 0.85, 0.9), 0.1));
+                             new Metal(Color(0.85, 0.85, 0.9), 0.1));
     scene_cache.emplace_back(new AABB(Vector3d(3.5, 0.5, 1.5), Vector3d(4.5, 1.5, 2.5)),
-                       new Lambertian(Color(0.1, 0.2, 0.4)));
+                             new Lambertian(Color(0.1, 0.2, 0.4)));
     scene_cache.emplace_back(new AABB(Vector3d(3.5, 0.5, -2.5), Vector3d(4.5, 1.5, -1.5)), new Dielectric(1.7));
     scene_cache.emplace_back(new Sphere(Vector3d(4, 1, 1), 0.3), new Dielectric(1.4));
     scene_cache.emplace_back(new Sphere(Vector3d(5, 1, 2), 0.3), new Dielectric(1.3));

@@ -5,6 +5,9 @@ Shape* ShapeFactory::produce(const std::string &type, const std::vector <double>
     if (type == "Sphere") {
         result = new Sphere(Vector3d(args[0], args[1], args[2]), args[3]);
     }
+    if (type == "AABB") {
+        result = new AABB(Vector3d(args[0], args[1], args[2]), Vector3d(args[3], args[4], args[5]));
+    }
     return result;
 }
 

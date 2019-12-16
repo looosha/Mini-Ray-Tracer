@@ -53,6 +53,8 @@ public:
  * Sets the configuration and produces the snapshot
  */
 class RayTracer {
+    const double MAX_TIME = sqrt(std::numeric_limits <double>::max());
+
     std::vector <Object3d> scene_cache;
     BVH scene_tree;
 
@@ -65,6 +67,11 @@ class RayTracer {
     Color trace(const Ray &ray, int depth);
 public:
     RayTracer();
+
+    /**
+     * @brief Fixes the scene to get the demo image
+     */
+    void demoScene();
 
     /**
      * @brief Adds an object to the scene

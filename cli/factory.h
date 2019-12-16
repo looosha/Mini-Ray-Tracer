@@ -5,6 +5,7 @@
 #include "../runtime/object3d.h"
 
 #include "../shapes/sphere.h"
+#include "../shapes/aabb.h"
 
 class ShapeFactory {
 public:

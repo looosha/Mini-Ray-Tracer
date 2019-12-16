@@ -45,9 +45,9 @@ int main() {
         std::cout << "Camera will be set to default settings\n";
     }
 
-    int width = 600;
-    int height = 400;
-    int precision = 10;
+    int width = 1200;
+    int height = 800;
+    int precision = 100;
     int depth = 5;
     std::cout << "Type D for the default image settings or type M to input them mannually\n";
     response = "";
@@ -57,7 +57,7 @@ int main() {
         std::cout << "Image width (in pixels): ";
         std::cin >> width;
         std::cout << "Image height (in pixels): ";
-        std::cin >> width;
+        std::cin >> height;
         std::cout << "Precision level (for anti-aliasing, values of around 10 give a tolerant quality, values of 100+ produce the maximal quality): ";
         std::cin >> precision;
         std::cout << "Depth of reflection (usually from 3 to 5): ";

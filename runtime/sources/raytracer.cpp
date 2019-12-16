@@ -50,7 +50,7 @@ RayTracer::RayTracer() {}
 void RayTracer::demoScene() {
     scene_cache.emplace_back(new Sphere(Vector3d(0, -1000, 0), 1000), new Lambertian(Color(0.5, 0.7, 0.5)));
 
-    const int k = 10;
+    const int k = 11;
     for (int a = -k; a < k; a++) {
         for (int b = -k; b < k; b++) {
             float choose_mat = utils::genRandom(0.0, 1.0);
@@ -80,7 +80,7 @@ void RayTracer::demoScene() {
 
     scene_cache.emplace_back(new Sphere(Vector3d(0, 1, 0), 1.0), new Dielectric(1.5));
     scene_cache.emplace_back(new Sphere(Vector3d(-4, 1, 0), 1.0), new Lambertian(Color(0.4, 0.2, 0.1)));
-    //scene_cache.emplace_back(new Sphere(Vector3d(4, 1, 0), 1.0), new Metal(Color(0.7, 0.6, 0.5), 0.0));
+//    scene_cache.emplace_back(new Sphere(Vector3d(4, 1, 0), 1.0), new Metal(Color(0.7, 0.6, 0.5), 0.0));
     scene_cache.emplace_back(new AABB(Vector3d(3.5, 0.5, -0.5), Vector3d(4.5, 1.5, 0.5)),
                              new Metal(Color(0.85, 0.85, 0.9), 0.1));
     scene_cache.emplace_back(new AABB(Vector3d(3.5, 0.5, 1.5), Vector3d(4.5, 1.5, 2.5)),
@@ -91,7 +91,7 @@ void RayTracer::demoScene() {
     scene_cache.emplace_back(new Sphere(Vector3d(4, 1, -1), 0.3), new Dielectric(1.4));
     scene_cache.emplace_back(new Sphere(Vector3d(5, 1, -2), 0.3), new Dielectric(1.3));
     scene_cache.emplace_back(new Sphere(Vector3d(6, 1, 0), 0.3), new Metal(Color(0.7, 0.6, 0.5), 0.0));
-}
+ }
 
 void RayTracer::addToScene(const Object3d &obj) {
     scene_cache.emplace_back(obj);
@@ -118,7 +118,7 @@ Image RayTracer::snapshot(int res_w, int res_h, int antialiasing, int depth) {
 
     scene_tree.init(scene_cache);
     Camera camera(
-            {13, 3, -1},
+            {13, 2, 3},
             {0, 0, 0},
             acos(-1) / 9,
             res_w / double(res_h),

@@ -27,4 +27,4 @@ Finished in 2821.56s
 
 ## Acknowledgments
 
-The project was inspired by the <em> Ray Tracing </em> series of Peter Shirley books.
+The project was inspired by the <em> Ray Tracing </em> series of books by Peter Shirley.

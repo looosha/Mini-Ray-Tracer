@@ -1,4 +1,4 @@
-# Mini-Ray-Tracer
+<h1> Mini-Ray-Tracer </h1>
 Self Proposed Project for COMP 2012H
 
 The current To-Do list is in the "Issues" tab.

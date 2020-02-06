@@ -2,7 +2,7 @@
 
 Mini Ray Tracer is a 3D-graphics renderer that synthesizes a photorealistic snapshot of a scene, individually tracing the path of each ray from the observer's perspective. It is a working console application where the input is a description of the 3-dimensional scene and the output is a PNG image.
 
-This self-proposed project was created to fulfill one of the requirements of the course COMP 2012H Fall 2019 in HKUST. Implementation and algorithm behind the project was explained in the following pdf file: https://drive.google.com/file/d/1gIxRG7IrHpc7Z-HVAODMjoI7Siqgfa7-/view?usp=sharing.
+This self-proposed project was created to fulfill one of the requirements of the course COMP 2012H Fall 2019 in HKUST. Implementation and algorithm behind the project were explained in the following pdf file: https://drive.google.com/file/d/1gIxRG7IrHpc7Z-HVAODMjoI7Siqgfa7-/view?usp=sharing.
 
 ## Running the tests
 

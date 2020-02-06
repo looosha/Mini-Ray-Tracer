@@ -14,7 +14,7 @@ scene_cache.emplace_back(new Sphere(Vector3d(0, -1000, 0), 1000), new Lambertian
 
 Depending on the shape, material of the objects, position of a "camera" (source of the light beams) set by the user, there will be different output images. 
 
-### Test images
+## Test images
 
 ![Picture1](https://user-images.githubusercontent.com/53835037/73949200-4bf1a780-4924-11ea-8682-389d1c87bd51.png)
 ```
@@ -23,8 +23,22 @@ Anti-aliasing level: 100
 Reflection depth: 5
 Finished in 2821.56s
 ```
+![Picture2](https://user-images.githubusercontent.com/53835037/73950408-15b52780-4926-11ea-9ff2-6376f975679f.png)
+```
+Final resolution: 1200x800
+Anti-aliasing level: 100
+Reflection depth: 5
+Finished in 2821.56s
+```
 
+![Picture3](https://user-images.githubusercontent.com/53835037/73950745-a429a900-4926-11ea-8b5d-be7f99c675d9.png)
+```
+Final resolution: 800x400
+Anti-aliasing level: 100
+Reflection depth: 5
+Finished in 125.77s
+```
 
 ## Acknowledgments
 
-The project was inspired by the <em> Ray Tracing </em> series of books by Peter Shirley.
+The project was inspired by the <em> Ray Tracing </em> series of Peter Shirley books.
